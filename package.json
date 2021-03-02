@@ -1,0 +1,27 @@
+{
+  "name": "natours",
+  "version": "1.0.0",
+  "description": "CSS Course",
+  "main": "index.js",
+  "scripts": {
+    "watch": "node-sass sass/main.scss css/style.css -w",
+    "sync": "browser-sync start --proxy 'http://natours.test' --files='**/*'",
+    "start": "npm-run-all --parallel sync watch",
+    "compile": "node-sass sass/main.scss css/style.compile.css",
+    "concat": "concat -o css/style.concat.css css/icon-font.css css/style.compile.css",
+    "prefix": "postcss css/style.concat.css --use autoprefixer -b 'last 10 versions' -o css/style.prefix.css",
+    "compress": "node-sass css/style.prefix.css css/style.css --output-style compressed",
+    "build": "npm-run-all compile concat prefix compress"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.2.4",
+    "browser-sync": "^2.26.14",
+    "concat": "^1.0.3",
+    "node-sass": "^5.0.0",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.2.6",
+    "postcss-cli": "^8.3.1"
+  }
+}
